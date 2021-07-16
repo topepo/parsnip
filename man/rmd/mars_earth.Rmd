@@ -61,6 +61,10 @@ An alternate method for using MARs for categorical outcomes can be found in [dis
 ```{r child = "template-makes-dummies.Rmd"}
 ```
 
+## Examples 
+
+The "Fitting and Predicting with parsnip" article contains [examples](https://parsnip.tidymodels.org/articles/articles/Examples.html#mars-earth) for `mars()` with the `"earth"` engine.
+
 ## References
 
  - Friedman, J. 1991. "Multivariate Adaptive Regression Splines." _The Annals of Statistics_, vol. 19, no. 1, pp. 1-67.

@@ -20,6 +20,10 @@ logistic_reg() %>%
 ```{r child = "template-makes-dummies.Rmd"}
 ```
 
+## Examples 
+
+The "Fitting and Predicting with parsnip" article contains [examples](https://parsnip.tidymodels.org/articles/articles/Examples.html#logistic-reg-glm) for `logistic_reg()` with the `"glm"` engine.
+
 ## References
 
  - Kuhn, M, and K Johnson. 2013. _Applied Predictive Modeling_. Springer.

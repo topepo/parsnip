@@ -69,6 +69,10 @@ nearest_neighbor(
 ```{r child = "template-same-scale.Rmd"}
 ```
 
+## Examples 
+
+The "Fitting and Predicting with parsnip" article contains [examples](https://parsnip.tidymodels.org/articles/articles/Examples.html#nearest-neighbor-kknn) for `nearest_neighbor()` with the `"kknn"` engine.
+
 ## References
 
  - Hechenbichler K. and Schliep K.P. (2004) [Weighted k-Nearest-Neighbor Techniques and Ordinal Classification](https://epub.ub.uni-muenchen.de/1769/), Discussion Paper 399, SFB 386, Ludwig-Maximilians University Munich

@@ -53,6 +53,9 @@ logistic_reg(penalty = double(1)) %>%
 ```{r child = "template-same-scale.Rmd"}
 ```
 
+## Examples 
+
+The "Fitting and Predicting with parsnip" article contains [examples](https://parsnip.tidymodels.org/articles/articles/Examples.html#logistic-reg-keras) for `logistic_reg()` with the `"keras"` engine.
 
 ## References
 

@@ -10,7 +10,7 @@ template:
 # https://github.com/tidyverse/tidytemplate for css
 
 development:
-  mode: auto
+  mode: release
 
 
 figures:
@@ -90,6 +90,8 @@ navbar:
        href: https://www.tidymodels.org/learn/develop/models/
      - text: Evaluating submodels with the same model object
        href: articles/articles/Submodels.html
+     - text: Fitting and Predicting with parsnip
+       href: articles/articles/Examples.html
   - text: News
     href: news/index.html
   - text: Reference

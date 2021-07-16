@@ -93,6 +93,10 @@ If the model specification has `early_stop >= trees`, `early_stop` is converted 
 
 parsnip chooses the objective function based on the characteristics of the outcome. To use a different loss, pass the `objective` argument to [set_engine()]. 
 
+## Examples 
+
+The "Fitting and Predicting with parsnip" article contains [examples](https://parsnip.tidymodels.org/articles/articles/Examples.html#boost-tree-xgboost) for `boost_tree()` with the `"xgboost"` engine.
+
 ## References
 
  - [XGBoost: A Scalable Tree Boosting System](https://arxiv.org/abs/1603.02754)

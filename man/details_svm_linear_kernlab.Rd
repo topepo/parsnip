@@ -82,6 +82,13 @@ center and scale each so that each predictor has mean zero and a
 variance of one.
 }
 
+\subsection{Examples}{
+
+The “Fitting and Predicting with parsnip” article contains
+\href{https://parsnip.tidymodels.org/articles/articles/Examples.html#svm-linear-kernlab}{examples}
+for \code{svm_linear()} with the \code{"kernlab"} engine.
+}
+
 \subsection{References}{
 \itemize{
 \item Lin, HT, and R Weng. \href{https://www.csie.ntu.edu.tw/~cjlin/papers/plattprob.pdf}{“A Note on Platt’s Probabilistic Outputs for Support Vector Machines”}

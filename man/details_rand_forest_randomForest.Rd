@@ -88,6 +88,13 @@ Categorical predictors can be partitioned into groups of factor levels
 are not required for this model.
 }
 
+\subsection{Examples}{
+
+The “Fitting and Predicting with parsnip” article contains
+\href{https://parsnip.tidymodels.org/articles/articles/Examples.html#rand-forest-randomForest}{examples}
+for \code{rand_forest()} with the \code{"randomForest"} engine.
+}
+
 \subsection{References}{
 \itemize{
 \item Kuhn, M, and K Johnson. 2013. \emph{Applied Predictive Modeling}.

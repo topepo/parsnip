@@ -82,6 +82,13 @@ center and scale each so that each predictor has mean zero and a
 variance of one.
 }
 
+\subsection{Examples}{
+
+The “Fitting and Predicting with parsnip” article contains
+\href{https://parsnip.tidymodels.org/articles/articles/Examples.html#nearest-neighbor-kknn}{examples}
+for \code{nearest_neighbor()} with the \code{"kknn"} engine.
+}
+
 \subsection{References}{
 \itemize{
 \item Hechenbichler K. and Schliep K.P. (2004) \href{https://epub.ub.uni-muenchen.de/1769/}{Weighted k-Nearest-Neighbor Techniques and Ordinal Classification}, Discussion

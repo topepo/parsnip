@@ -50,6 +50,10 @@ decision_tree(min_n = integer()) %>%
 ```{r child = "template-tree-split-factors.Rmd"}
 ```
 
+## Examples 
+
+The "Fitting and Predicting with parsnip" article contains [examples](https://parsnip.tidymodels.org/articles/articles/Examples.html#decision-tree-C5.0) for `decision_tree()` with the `"C5.0"` engine.
+
 ## References
 
 -   Kuhn, M, and K Johnson. 2013. *Applied Predictive Modeling*. Springer.

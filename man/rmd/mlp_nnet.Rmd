@@ -73,6 +73,10 @@ mlp(
 ```{r child = "template-same-scale.Rmd"}
 ```
 
+## Examples 
+
+The "Fitting and Predicting with parsnip" article contains [examples](https://parsnip.tidymodels.org/articles/articles/Examples.html#mlp-nnet) for `mlp()` with the `"nnet"` engine.
+
 ## References
 
  - Kuhn, M, and K Johnson. 2013. _Applied Predictive Modeling_. Springer.

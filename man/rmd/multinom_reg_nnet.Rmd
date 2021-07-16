@@ -51,6 +51,10 @@ multinom_reg(penalty = double(1)) %>%
 ```{r child = "template-same-scale.Rmd"}
 ```
 
+## Examples 
+
+The "Fitting and Predicting with parsnip" article contains [examples](https://parsnip.tidymodels.org/articles/articles/Examples.html#multinom-reg-nnet) for `multinom_reg()` with the `"nnet"` engine.
+
 ## References
 
  - Luraschi, J, K Kuo, and E Ruiz. 2019. _Mastering nnet with R_. O'Reilly Media

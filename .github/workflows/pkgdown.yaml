@@ -53,6 +53,21 @@ jobs:
           pak::pkg_install("C50")
         shell: Rscript {0}
 
+      - name: Install Miniconda
+        run: |
+          Rscript -e "pak::pkg_install('rstudio/reticulate')"
+          Rscript -e "reticulate::install_miniconda()"
+
+      - name: Find Miniconda on macOS
+        if: runner.os == 'macOS'
+        run: echo "options(reticulate.conda_binary = reticulate:::miniconda_conda())" >> .Rprofile
+
+      - name: Install TensorFlow
+        run: |
+          reticulate::conda_create('r-reticulate', packages = c('python==3.6.9'))
+          tensorflow::install_tensorflow(version='1.14.0')
+        shell: Rscript {0}
+
       - name: Install package
         run: R CMD INSTALL .
 

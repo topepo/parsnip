@@ -58,6 +58,10 @@ boost_tree(trees = integer(), min_n = integer(), sample_size = numeric()) %>%
 
 By default, early stopping is used. To use the complete set of boosting iterations, pass `earlyStopping = FALSE` to [set_engine()]. Also, it is unlikely that early stopping will occur if `sample_size = 1`.
 
+## Examples 
+
+The "Fitting and Predicting with parsnip" article contains [examples](https://parsnip.tidymodels.org/articles/articles/Examples.html#boost-tree-C5.0) for `boost_tree()` with the `"C5.0"` engine.
+
 ## References
 
 -   Kuhn, M, and K Johnson. 2013. *Applied Predictive Modeling*. Springer.

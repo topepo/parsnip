@@ -39,6 +39,10 @@ Note that the `refresh` default prevents logging of the estimation process. Chan
 
 For prediction, the `"stan"` engine can compute posterior intervals analogous to confidence and prediction intervals. In these instances, the units are the original outcome and when `std_error = TRUE`, the standard deviation of the posterior  distribution (or posterior predictive distribution as appropriate) is returned.
 
+## Examples 
+
+The "Fitting and Predicting with parsnip" article contains [examples](https://parsnip.tidymodels.org/articles/articles/Examples.html#logistic-reg-stan) for `logistic_reg()` with the `"stan"` engine.
+
 ## References
 
  - McElreath, R. 2020 _Statistical Rethinking_. CRC Press.

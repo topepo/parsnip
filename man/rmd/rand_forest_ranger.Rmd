@@ -78,6 +78,10 @@ By default, parallel processing is turned off. When tuning, it is more efficient
 
 For `ranger` confidence intervals, the intervals are  constructed using the form `estimate +/- z * std_error`. For  classification probabilities, these values can fall outside of  `[0, 1]` and will be coerced to be in this range.
 
+## Examples 
+
+The "Fitting and Predicting with parsnip" article contains [examples](https://parsnip.tidymodels.org/articles/articles/Examples.html#rand-forest-ranger) for `rand_forest()` with the `"ranger"` engine.
+
 ## References
 
  - Kuhn, M, and K Johnson. 2013. _Applied Predictive Modeling_. Springer.

@@ -54,6 +54,10 @@ linear_reg(penalty = double(1), mixture = double(1)) %>%
 ```
 By default, [glmnet::glmnet()] uses the argument `standardize = TRUE` to center and scale the data. 
 
+## Examples 
+
+The "Fitting and Predicting with parsnip" article contains [examples](https://parsnip.tidymodels.org/articles/articles/Examples.html#linear-reg-glmnet) for `linear_reg()` with the `"glmnet"` engine.
+
 ## References
 
  - Hastie, T, R Tibshirani, and M Wainwright. 2015. _Statistical Learning with Sparsity_. CRC Press.

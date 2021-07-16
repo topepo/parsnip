@@ -53,6 +53,10 @@ logistic_reg(penalty = double(1), mixture = double(1)) %>%
 ```{r child = "template-same-scale.Rmd"}
 ```
 
+## Examples 
+
+The "Fitting and Predicting with parsnip" article contains [examples](https://parsnip.tidymodels.org/articles/articles/Examples.html#logistic-reg-LiblineaR) for `logistic_reg()` with the `"LiblineaR"` engine.
+
 ## References
 
  - Hastie, T, R Tibshirani, and M Wainwright. 2015. _Statistical Learning with Sparsity_. CRC Press.
