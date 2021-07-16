@@ -10,25 +10,6 @@ possible_engines <- function(object, ...) {
   unique(engs$engine)
 }
 
-stop_incompatible_engine <- function(avail_eng) {
-  msg <- glue::glue(
-    "Available engines are: ",
-    glue::glue_collapse(glue::glue("'{avail_eng}'"), sep = ", ")
-  )
-  rlang::abort(msg)
-}
-
-check_engine <- function(object) {
-  avail_eng <- possible_engines(object)
-  eng <- object$engine
-  if (is.null(eng) || length(eng) > 1) {
-    stop_incompatible_engine(avail_eng)
-  } else if (!(eng %in% avail_eng)) {
-    stop_incompatible_engine(avail_eng)
-  }
-  object
-}
-
 # ------------------------------------------------------------------------------
 
 shhhh <- function(x)
@@ -99,7 +80,7 @@ set_engine <- function(object, engine, ...) {
     stop_incompatible_engine(avail_eng)
   }
   object$engine <- engine
-  object <- check_engine(object)
+  check_spec_mode_engine_val(class(object)[1], object$engine, object$mode)
 
   if (object$engine == "liquidSVM") {
     lifecycle::deprecate_soft(

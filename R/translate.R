@@ -59,14 +59,15 @@ translate.default <- function(x, engine = x$engine, ...) {
   mod_name <- specific_model(x)
 
   x$engine <- engine
-  x <- check_engine(x)
-
   if (x$mode == "unknown") {
     rlang::abort("Model code depends on the mode; please specify one.")
   }
 
-  if (is.null(x$method))
+  check_spec_mode_engine_val(class(x)[1], x$engine, x$mode)
+
+  if (is.null(x$method)) {
     x$method <- get_model_spec(mod_name, x$mode, engine)
+  }
 
   arg_key <- get_args(mod_name, engine)
 
@@ -174,7 +175,7 @@ deharmonize <- function(args, key) {
 
 add_methods <- function(x, engine) {
   x$engine <- engine
-  x <- check_engine(x)
+  check_spec_mode_engine_val(class(x)[1], x$engine, x$mode)
   x$method <- get_model_spec(specific_model(x), x$mode, x$engine)
   x
 }

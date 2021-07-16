@@ -23,9 +23,6 @@ check_empty_ellipse <- function (...)  {
   terms
 }
 
-all_modes <- c("classification", "regression", "censored regression")
-
-
 deparserizer <- function(x, limit = options()$width - 10) {
   x <- deparse(x, width.cutoff = limit)
   x <- gsub("^    ", "", x)
@@ -192,7 +189,7 @@ update_dot_check <- function(...) {
 #' @rdname add_on_exports
 new_model_spec <- function(cls, args, eng_args, mode, method, engine) {
 
-  check_spec_mode_val(cls, mode)
+  check_spec_mode_engine_val(cls, engine, mode)
 
   out <- list(args = args, eng_args = eng_args,
               mode = mode, method = method, engine = engine)

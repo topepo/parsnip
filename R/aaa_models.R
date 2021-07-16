@@ -1,5 +1,7 @@
 # Initialize model environments
 
+all_modes <- c("classification", "regression", "censored regression")
+
 # ------------------------------------------------------------------------------
 
 ## Rules about model-related information
@@ -134,24 +136,89 @@ check_mode_val <- function(mode) {
 }
 
 
-stop_incompatible_mode <- function(spec_modes) {
+stop_incompatible_mode <- function(spec_modes, eng) {
+  if (is.null(eng)) {
+    msg <- glue::glue(
+      "Available modes are: ",
+      glue::glue_collapse(glue::glue("'{spec_modes}'"), sep = ", ")
+    )
+  } else {
+    msg <- glue::glue(
+      "Available modes for engine {eng} are: ",
+      glue::glue_collapse(glue::glue("'{spec_modes}'"), sep = ", ")
+    )
+  }
+
+  rlang::abort(msg)
+}
+
+stop_incompatible_engine <- function(spec_engs, mode) {
   msg <- glue::glue(
-    "Available modes are: ",
-    glue::glue_collapse(glue::glue("'{spec_modes}'"), sep = ", ")
+    "Available engines for mode {mode} are: ",
+    glue::glue_collapse(glue::glue("'{spec_engs}'"), sep = ", ")
   )
   rlang::abort(msg)
 }
 
-# check if class and mode are compatible
-check_spec_mode_val <- function(cls, mode) {
-  spec_modes <- rlang::env_get(get_model_env(), paste0(cls, "_modes"))
-  if (is.null(mode) || length(mode) > 1) {
-    stop_incompatible_mode(spec_modes)
-  } else if (!(mode %in% spec_modes)) {
-    stop_incompatible_mode(spec_modes)
+# check if class and mode and engine are compatible
+check_spec_mode_engine_val <- function(cls, eng, mode) {
+  all_modes <- c("unknown", all_modes)
+  if (!(mode %in% all_modes)) {
+    rlang::abort(paste0("'", mode, "' is not a known mode."))
   }
+
+  model_info <- rlang::env_get(get_model_env(), cls)
+
+  # Cases where the model definition is in parsnip but all of the engines
+  # are contained in a different package
+  if (nrow(model_info) == 0) {
+    return(invisible(NULL))
+  }
+
+  # ------------------------------------------------------------------------------
+  # First check engine against any mode
+
+  spec_engs <- model_info$engine
+  # engine is allowed to be NULL
+  if (!is.null(eng) && !(eng %in% spec_engs)) {
+    rlang::abort(
+      paste0(
+        "Engine '", eng, "' is not supported for `", cls, "()`. See ",
+        "`show_engines('", cls, "')`."
+      )
+    )
+  }
+
+  # ----------------------------------------------------------------------------
+  # Check modes based on model and engine
+
+  spec_modes <- model_info$mode
+  if (!is.null(eng)) {
+    spec_modes <- spec_modes[model_info$engine == eng]
+  }
+  spec_modes <- unique(c("unknown", spec_modes))
+
+  if (is.null(mode) || length(mode) > 1) {
+    stop_incompatible_mode(spec_modes, eng)
+  } else if (!(mode %in% spec_modes)) {
+    stop_incompatible_mode(spec_modes, eng)
+  }
+
+  # ----------------------------------------------------------------------------
+  # Check engine based on model and model
+
+  # How check for compatibility with the chosen mode (if any)
+  if (!is.null(mode) && mode != "unknown") {
+    spec_engs <- spec_engs[model_info$mode == mode]
+  }
+  spec_engs <- unique(spec_engs)
+  if (!is.null(eng) && !(eng %in% spec_engs)) {
+    stop_incompatible_engine(spec_engs, mode)
+  }
+
   invisible(NULL)
 }
+
 
 check_engine_val <- function(eng) {
   if (rlang::is_missing(eng) || length(eng) != 1 || !is.character(eng))
@@ -625,8 +692,7 @@ get_dependency <- function(model) {
 set_fit <- function(model, mode, eng, value) {
   check_model_exists(model)
   check_eng_val(eng)
-  check_mode_val(mode)
-  check_engine_val(eng)
+  check_spec_mode_engine_val(model, eng, mode)
   check_fit_info(value)
 
   current <- get_model_env()
@@ -692,8 +758,7 @@ get_fit <- function(model) {
 set_pred <- function(model, mode, eng, type, value) {
   check_model_exists(model)
   check_eng_val(eng)
-  check_mode_val(mode)
-  check_engine_val(eng)
+  check_spec_mode_engine_val(model, eng, mode)
   check_pred_info(value, type)
 
   current <- get_model_env()
